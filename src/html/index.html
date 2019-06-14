@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index.html</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+    <!-- 上节课的<div>hello world</div>
+    <img src="../image/ok.jpg" alt="">
+    <script src = "../js/index.js"></script> -->
+
+
+    <!-- 今天做一个移动端项目，qq音乐播放器 -->
+    
+    <div class="wrapper">
+        <div class="song-img">
+            <div class="img-box" data-deg = 0>   <!--旋转,data-deg记录角度，从0开始-->
+                <img src="../image/jakob-owens-208991.jpg" alt="">
+                <!-- 根据传过来的数据 -->
+            </div>
+        </div>
+        <div class="song-info">
+            <!-- 动态创建 -->
+            <!-- <div class="song-name">丑八怪</div>
+            <div class="singer-name">璇之谦</div>
+            <div class="ablum-name">意外</div> -->
+            <!-- 传数据 -->
+        </div>
+        <div class="pro">
+            <!--进度条-->
+            <div class="cur-time">00:00</div>           
+            <div class = "pro-wrap">
+                <div class = "pro-bottom"></div>
+                <div class = "pro-top">
+                    <div class="spot"></div>
+                </div>
+            </div>
+            <div class="all-time">04:24</div>
+        </div>
+        <div class="control">
+            <div class="btn like"></div>
+            <div class="btn prev"></div>
+            <div class="btn play"></div>
+            <div class="btn next"></div>
+            <div class="btn list"></div>
+        </div>
+    </div>
+
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/gaussBlur.js"></script>
+    <script src="../js/render.js"></script>
+    <script src="../js/audioControl.js"></script>
+    <script src="../js/indexControl.js"></script>
+    <script src="../js/pro.js"></script>
+    <script src="../js/index.js"></script>
+
+
+    <!-- 引用顺序：下面的模块是引用了上面的模块的 -->
+
+</body>
+</html>

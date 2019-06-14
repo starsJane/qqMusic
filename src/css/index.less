@@ -1,0 +1,218 @@
+//上节课的
+// body {
+//     background-color: #fff;
+//     color: #Fff;
+//     font-size: 30px;
+//     div {
+//         width: 200px;
+//         height: 200px;
+//         background-color: green;
+//         transform: rotateZ(45deg);  //css3属性
+//     }
+// }
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    body {
+        font-size: 12px;
+
+        //背景图片三件套：
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 100% 100%; //即center center
+
+        .wrapper {
+            width: 100vw;   //vw把宽度设置成100份，100vw就是占满，相当于100%，50vw就是一半
+            height: 100vh;
+            // vh是将当前视口高度分成100份，vw同理，无论当前设备多宽多高都是支持响应式自适应的
+            padding-top: 60px;  //出现滚动条    360*640 （在Galaxy S5下）
+            
+            box-sizing: border-box; //将标准盒模型转换成ie模式下的盒模型，滚动条消失    360*580高度包括padding（在Galaxy S5下）
+            
+            background-color: rgba(0, 0, 0, 0.2);
+
+            .song-img {
+                //自适应的正方形%, 记住：实现自适应正方形的方法
+                width: 70%; //基于父级（.wrapper）
+                height: 0;  //高度被padding撑开  (height: 70%;这样不能是新啊正方形)
+                padding-top: 70%;  //padding（无论水平还是竖直方向的）都是基于父级（.wrapper width: 100vw;）的宽度来计算 padding-bottom: 70%;
+                
+                // border: 1px solid #000;
+
+                //margin
+                margin: 0 auto;
+
+                position: relative;
+
+                .img-box {
+                    background-color: #000;
+                    // width: 100%;
+                    // height: 100%; 父级height为0，所以这个也没有
+
+                    //用这个方法占满父级song-img，内容区域吻合方向
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 50%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        //这个时候可以设置%；（父级.img-box的宽高已经被定位确定了）
+                        width: 75%;
+                        height: 75%;
+                        border-radius: 50%;
+
+                        //这个居中方式：
+                        // 1. position:absolute; top: 50%; left: 50%; margin-top transform改变
+                        // 2. 父级flex 
+                    }
+                }
+            }
+
+            .song-info {
+                margin-top: 20px;
+                width: 100%;
+                height: 126px;   //高度固定值
+
+                text-align: center;  //设置在父级
+
+                color: #fff;
+                // border: 1px solid #000;
+
+                .song-name{
+                    font-size: 24px;
+                    line-height: 36px;
+                    margin-bottom: 8px;
+                } 
+
+
+            }
+
+            .pro {
+                display: flex;  // 今晚复习这个知识点
+
+                .cur-time,
+                .all-time {
+                    width: 60px;
+                    height: 40px;
+                    // border: 1px solid #000;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 40px;  //关于文字设置行高px
+                }
+
+                .pro-wrap {
+                    flex: 1;  //占剩下部分的
+                    // border: 1px solid #000;
+                    position: relative;
+
+                    overflow: hidden;  //解决下面的translateX(-100%)
+
+                    .pro-top,
+                    .pro-bottom {
+                        width: 100%;
+                        // height: 100%;
+                        height: 2px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -1px;
+                    }
+                    .pro-top {
+                        background-color: #fff;
+                        transform: translateX(-100%);   //从左侧0点向左平移自身宽度的100% 
+                        
+                        position: relative;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .spot {
+                            width: 20px;
+                            height: 20px;
+                            // border: 1px solid #000;
+
+                            position: absolute;
+                            right: -12px;
+
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            // 用伪元素写小圆点
+                            &::after {  
+                                content: '';
+                                display: block;
+                                width: 4px;
+                                height: 4px;
+                                border-radius: 50%;
+                                background-color: #fff;
+                            }
+                        }
+
+                    }
+                    .pro-bottom {
+                        background-color: rgba(255, 255, 255, 0.6);
+                    }
+                    
+                }
+
+                //拖曳那部分进度条等实现功能时再写样式
+                
+            }
+
+            .control {
+                width: 100%;
+                height: 60px;   //高度固定值
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                display: flex;
+
+                .btn {
+                    width: 20%;
+                    height: 100%;
+                    // border: 1px solid #000;
+
+                    flex: 1; //平分，盒子的每一个部分都占一份
+
+                    //今晚复习
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center center;
+                }
+                .like {
+                    background-image: url(../image/icon-like.png);
+                    &.liking {
+                        background-image: url(../image/icon-like-solid.png);
+                    }
+                }
+                .prev {
+                    background-image: url(../image/icon-prev.png);
+                }
+                .play {
+                    background-image: url(../image/icon-play.png);
+                    &.playing { //标记当前正在播放，播歌时增加的class类名，会覆盖上面的.play
+                        background-image: url(../image/icon-pause.png);
+                    }
+                }
+                .next {
+                    background-image: url(../image/icon-next.png);
+                }
+                .list {
+                    background-image: url(../image/icon-list.png);
+                }
+            }
+
+        }
+    }
+}
